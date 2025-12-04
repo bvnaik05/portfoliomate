@@ -1,0 +1,290 @@
+/* DARK MODE NEON THEME */
+body {
+  margin: 0;
+  background-color: #0f172a;
+  /* Deep Navy */
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+  /* Center the entire display */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* FLOATING BACKGROUND ICONS */
+.floating-icons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* Let clicks pass through */
+  z-index: 0;
+  overflow: hidden;
+}
+
+.icon {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0.1;
+  /* Faint ghost look */
+  animation: floatUp 15s linear infinite;
+}
+
+.icon:nth-child(1) {
+  left: 10%;
+  animation-duration: 20s;
+  animation-delay: 0s;
+}
+
+.icon:nth-child(2) {
+  left: 30%;
+  animation-duration: 25s;
+  animation-delay: 2s;
+}
+
+.icon:nth-child(3) {
+  left: 70%;
+  animation-duration: 18s;
+  animation-delay: 5s;
+}
+
+.icon:nth-child(4) {
+  left: 90%;
+  animation-duration: 22s;
+  animation-delay: 1s;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(110vh) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(-10vh) rotate(360deg);
+  }
+}
+
+/* MAIN CONTAINER */
+.container {
+  position: relative;
+  z-index: 1;
+  /* Sit above background */
+  /* CHANGED: Wider container to fit 3 columns comfortably */
+  width: 95%;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* HEADER */
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  background: linear-gradient(to right, #00d2ff, #3a7bd5);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+}
+
+p.subtitle {
+  text-align: center;
+  color: #94a3b8;
+  margin-bottom: 40px;
+  font-size: 1.2rem;
+}
+
+/* INPUT SECTION (Glass Bar) */
+.input-group {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  margin-bottom: 50px;
+  /* Keep input centered and reasonable width */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #334155;
+  padding: 15px;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #00d2ff;
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
+
+button.add-btn {
+  background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+  color: white;
+  border: none;
+  padding: 0 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button.add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
+}
+
+/* KANBAN BOARD GRID */
+.kanban-board {
+  display: grid;
+  /* CHANGED: Force 3 equal columns that don't wrap */
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* COLUMN PANELS (Glassmorphism) */
+.column {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.column h2 {
+  font-size: 1.4rem;
+  color: #00d2ff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Center column titles */
+  gap: 10px;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* CARDS */
+.card {
+  background: rgba(30, 41, 59, 0.7);
+  border-left: 4px solid #3a7bd5;
+  /* Accent line */
+  padding: 25px;
+  /* More padding for wider feel */
+  border-radius: 12px;
+  transition: transform 0.2s, background 0.2s;
+  position: relative;
+  overflow: hidden;
+
+  /* CHANGED: Center content inside card */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: rgba(51, 65, 85, 0.8);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Different accent colors for columns */
+.column:nth-child(2) .card {
+  border-left-color: #a855f7;
+}
+
+/* Purple for Screening */
+.column:nth-child(3) .card {
+  border-left-color: #10b981;
+}
+
+/* Green for Portfolio */
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.card-sector {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+/* ACTION BUTTONS */
+.card-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+  /* Center buttons */
+}
+
+.action-btn {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 0.85rem;
+  max-width: 140px;
+  /* Prevent them from getting too huge */
+}
+
+.action-btn:hover {
+  background: #3a7bd5;
+  border-color: #3a7bd5;
+}
+
+.delete-btn {
+  background: transparent;
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  flex: 0;
+  min-width: 40px;
+}
+
+.delete-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+}
